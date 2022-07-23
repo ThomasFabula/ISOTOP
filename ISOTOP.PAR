@@ -1,0 +1,16 @@
+Isotopenparameter: (Element/unt. Zust./ober. Zust./Jo,Ju,I1,I2/
+------------------  Isotop1/Ao1,Au1/Bo1,Bu1/H„ufigk1,Schwpkt1/
+                    Isotop2/Ao2,Au2/Bo2,Bu2/H„ufigk2,Schwpkt2)
+Molybdän
+b 3 D 3
+y 5 H 3
+  3.0  3.0  2.5  2.5
+Mo97
+    -61.8100   -126.0500
+    -19.7000     12.8000
+  9.50       154.6300
+Mo95
+    -59.7300   -123.0900
+      1.7200     -1.1200
+ 15.90         0.0000
+Molybdän Isotopieverschiebung=154.63 MHz aus der Arbeit von M. Koster
