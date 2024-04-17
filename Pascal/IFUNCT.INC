@@ -1,7 +1,7 @@
 {  IFUNCT.INC
 
-    (C) 1987  Institut f¸r Angewandte Physik
-              Universit‰t Bonn
+    (C) 1987  Institut f√ºr Angewandte Physik
+              Universit√§t Bonn
 
 }
 
@@ -68,7 +68,7 @@ end;
 
 
 {----------------------------------------------------------------------}
-{--------------  L‰dt ein berechnetes Spektrum von Disk  --------------}
+{--------------  L√§dt ein berechnetes Spektrum von Disk  --------------}
 {----------------------------------------------------------------------}
 procedure spektrum_laden;
 var  laden : char;
@@ -89,7 +89,7 @@ begin
     ClearScreen;
     LoadScreen(spekname);
     }
-    write('Bitte eine Taste dr¸cken...');
+    write('Bitte eine Taste dr√ºcken...');
     readln(ch);
    { LeaveGraphic; }
   end;
@@ -110,7 +110,7 @@ begin
   if drucken='J' then
   begin
     writeln;
-    writeln('ACHTUNG: Drucker muﬂ jetzt betriebsbereit sein !');
+    writeln('ACHTUNG: Drucker mu√ü jetzt betriebsbereit sein !');
     write  ('         <RETURN>=Drucken / <Q>=Abbruch : ');
     readln(ch);
     ch:=upcase(ch);
