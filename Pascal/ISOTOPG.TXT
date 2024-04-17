@@ -1,23 +1,23 @@
   +----------+
   | ISOTOPG: |   Berechnung der Hfs-Spektren zweier Isotope
   +----------+   mit max. 6  g e r a d e n  Isotopen
-Folgende Parameter sind vom Benutzer f¸r beide Isotope einzugeben:
-Au1, Au2 [MHz] = A-Faktoren der unteren Zust‰nde
-Ao1, Ao2 [MHz] = A-Faktoren der oberen  Zust‰nde
-Bu1, Bu2 [MHz] = B-Faktoren der unteren Zust‰nde
-Bo1, Bo2 [MHz] = B-Faktoren der oberen  Zust‰nde
-Ju, Jo         = H¸llendrehimpulse der unt. bzw. ober. Zust‰nde
+Folgende Parameter sind vom Benutzer f√ºr beide Isotope einzugeben:
+Au1, Au2 [MHz] = A-Faktoren der unteren Zust√§nde
+Ao1, Ao2 [MHz] = A-Faktoren der oberen  Zust√§nde
+Bu1, Bu2 [MHz] = B-Faktoren der unteren Zust√§nde
+Bo1, Bo2 [MHz] = B-Faktoren der oberen  Zust√§nde
+Ju, Jo         = H√ºllendrehimpulse der unt. bzw. ober. Zust√§nde
 I1, I2         = Kernspins der beiden Isotope
-H1, H2   [%]   = relative H‰ufigkeiten der beiden Isotope
+H1, H2   [%]   = relative H√§ufigkeiten der beiden Isotope
 S1, S2   [MHz] = Schwerpunkte der beiden Isotope (S1=0 => IS=S2)
 Kommentar      = 1 Zeile (Kommentar zum Spektrum)
 ( Defaultparameter vom Programm - ISOTOP.PAR    )
 ( Profilparameter des Programms - IPROFIL.PAR   )
 Das Programm berechnet aus oben genannten Parametern die Energiewerte
-f¸r den jeweils unteren W(Fu) bzw. oberen Zustand W(Fo) sowie die
-Energiedifferenzen E(Fu,Fo) = W(Fo) - W(Fu) und deren Intensit‰ten,
+f√ºr den jeweils unteren W(Fu) bzw. oberen Zustand W(Fo) sowie die
+Energiedifferenzen E(Fu,Fo) = W(Fo) - W(Fu) und deren Intensit√§ten,
 welche als Linien im HFS-Spektrum grafisch dargestellt werden. Bei der
-Summation kann zwischen Lorentz- oder Gaussprofil gew‰hlt werden. Bei
+Summation kann zwischen Lorentz- oder Gaussprofil gew√§hlt werden. Bei
 Bedarf kann das Spektrum auf einem Drucker ausgegeben werden.
 Die berechneten F-, K-, W- & Energiewerte E(Fu,Fo) lassen sich in
 einer Datei abspeichern. ( Defaultdatei : ISOTOP.DAT )
