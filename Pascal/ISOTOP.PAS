@@ -1,30 +1,30 @@
 {   ISOTOP.PAS
 
     berechnet das HFS-Spektrum zweier Isotope eines Elementes in
-    Abh‰ngigkeit der A- und B-Faktoren bei bekannten Drehimpuls-
-    quantenzahlen ( Ju, Jo, I1, I2 ). Auﬂerdem sind die Isotopie-
-    verschiebung IS [MHz], sowie die relativen H‰ufigkeiten H1, H2
+    Abh√§ngigkeit der A- und B-Faktoren bei bekannten Drehimpuls-
+    quantenzahlen ( Ju, Jo, I1, I2 ). Au√üerdem sind die Isotopie-
+    verschiebung IS [MHz], sowie die relativen H√§ufigkeiten H1, H2
     der Isotope [%] einzugeben.
 
     ( Ansonsten siehe Programme: HFSSPEK.PAS und SPEKTRUM.PAS )
-    Die F-, K-, W- und Energiewerte f¸År jeweils den unteren bzw.
-    oberen Zustand werden berechnet und ausgegeben. Hierf¸r kann
+    Die F-, K-, W- und Energiewerte f√º¬År jeweils den unteren bzw.
+    oberen Zustand werden berechnet und ausgegeben. Hierf√ºr kann
     eine Ausgabedatei benannt werden. (Default: ISOTOP.DAT)
 
-    Die ‹berg‰nge lassen sich als einzelne Linien oder auf Wunsch
+    Die √úberg√§nge lassen sich als einzelne Linien oder auf Wunsch
     als Summenprofil am Bildschirm oder auf dem Drucker anzeigen.
-    F¸r die Druckerausgabe benˆtigt man bei der HERCULES-Karte das
+    F√ºr die Druckerausgabe ben√∂tigt man bei der HERCULES-Karte das
     Systemprogramm HGC.COM mit den Optionen (HGC FULL HPRINT).
 
     Hiernach ist die residente Interruptroutine des Print-Screen
     Hardcopyprogramms auf die Grafikseite "umgebogen", und bei
-    DrÅcken der Tastenkombination <Shift>+<Prnt-Scr>+<n> erscheint
+    Dr¬Åcken der Tastenkombination <Shift>+<Prnt-Scr>+<n> erscheint
     ein Hardcopy auf dem jeweils angeschlossenen Drucker.
     ( n = 0, Ausdruck der Grafikseite 0 im Format DIN A4 )
-    F¸År weitere Informationen siehe Datei ISOTOP.TXT
+    F√º¬År weitere Informationen siehe Datei ISOTOP.TXT
 
-    (C) 1987  Institut fÅr Angewandte Physik
-              der Universit‰t Bonn
+    (C) 1987  Institut f¬År Angewandte Physik
+              der Universit√§t Bonn
 
     Thomas Fabula, Wolfgang Rupprecht
 
@@ -33,19 +33,19 @@
 program isotop;
 
 { Einbinden der GRAPHIX Turbo-Toolbox notwendigen Zeichenroutinen,   }
-{ GRAPHIX.SYS angepa·t auf Hercules-Grafikkarte (720x348 pixel)      }
+{ GRAPHIX.SYS angepa√°t auf Hercules-Grafikkarte (720x348 pixel)      }
 { d.h. zur Installation vorher GRAPHIX.HGH nach GRAPHIX.SYS kopieren.}
 
-{$I typedef.sys}          { System unabh‰ngige Typendefinitionen     }
-{$I graphix.sys}          { System abh‰ngige Definitionen & Routinen }
-{$I kernel.sys}           { System unabh‰ngige Support Routinen      }
+{$I typedef.sys}          { System unabh√§ngige Typendefinitionen     }
+{$I graphix.sys}          { System abh√§ngige Definitionen & Routinen }
+{$I kernel.sys}           { System unabh√§ngige Support Routinen      }
 
 {$I ideclare.inc}         { Deklarationen (const, type, var)         }
 {$I njsymbol.inc}         { Berechnung der nj-Symbole    (T.Brenner) }
 {$I realin.inc}           { REAL-Zahl Einleseroutine                 }
-{$I ifile.inc}            { Disketten I/O-Routinen f¸r Parameter     }
+{$I ifile.inc}            { Disketten I/O-Routinen f√ºr Parameter     }
 {$I iparam.inc}           { Parameter editieren                      }
-{$I ifunct.inc}           { zus‰tzliche  Funktionen                  }
+{$I ifunct.inc}           { zus√§tzliche  Funktionen                  }
 
 
 {------------------------------}
@@ -88,7 +88,7 @@ begin { lorentz }
 end { lorentz };
 
 {---------------------------}
-{-----   Gauﬂprofil   ------}
+{-----   Gau√üprofil   ------}
 {---------------------------}
 
 function gauss(var energie,e_0,intensy : real) : real;
@@ -98,7 +98,7 @@ begin { gauss }
   if (FWHM=0) then
     begin
       writeln(#7,#7,#7);
-      writeln('Gauﬂ:  FWHM = Null');
+      writeln('Gau√ü:  FWHM = Null');
       halt;
     end { if };
   argum:=argum/FWHM;
@@ -125,13 +125,13 @@ begin { lorentz_profil }
     ysum[ijk]:=ysum[ijk]+ylo;  { Aufsummierung des Signals }
     ylo:=untergrund+ylo;
     {  if switchi then DrawPoint(xlo,ylo); }
-    xlo:=xlo + deltalo;   { X-Wert erhˆhen }
-    ijk:=ijk+1;           { Laufindex f¸r Summe erhˆhen }
+    xlo:=xlo + deltalo;   { X-Wert erh√∂hen }
+    ijk:=ijk+1;           { Laufindex f√ºr Summe erh√∂hen }
   until (xlo > x_rechts);
 end { lorentz_profil };
 
 {----------------------------------------------}
-{-------  Berechnen eines Gauﬂprofils  --------}
+{-------  Berechnen eines Gau√üprofils  --------}
 {----------------------------------------------}
 
 procedure gauss_profil(var resonanc,inte:real; switch:boolean);
@@ -140,9 +140,9 @@ begin { gauss_profil }
   if switch then
    begin
      gotoxy(3,23);
-     write('Gauﬂ');
+     write('Gau√ü');
      gotoxy(73,2);
-     write('Gauﬂ');
+     write('Gau√ü');
    end { if };
   ylo:=0;
   xlo:=x_links;
@@ -154,15 +154,15 @@ begin { gauss_profil }
     ysum[ijk]:=ysum[ijk]+ylo;  { Aufsummierung des Signals }
     ylo:=untergrund+ylo;
     {  if switch then DrawPoint(xlo,ylo);  }
-    xlo:=xlo + deltalo;   { X-Wert erhˆhen }
-    ijk:=ijk+1;           { Laufindex f¸r Summe erhˆhen }
+    xlo:=xlo + deltalo;   { X-Wert erh√∂hen }
+    ijk:=ijk+1;           { Laufindex f√ºr Summe erh√∂hen }
   until (xlo > x_rechts);
 end { gauss_profil };
 
 {---------------------------------------------}
-{-------  Berechnen der Intensit‰ten  --------}
+{-------  Berechnen der Intensit√§ten  --------}
 {-------  Intens(ju,jo,fu,fo,ikern)   --------}
-{-------   Åber die sechsJ-Symbole    --------}
+{-------   ¬Åber die sechsJ-Symbole    --------}
 {---------------------------------------------}
 
 function intens(var juu,joo,fuu,foo,ikernspin : real) : real;
@@ -178,20 +178,20 @@ end { intens };
 
 
 {----------------------------------------------}
-{-------  Skalierung der Intensit‰ten  --------}
+{-------  Skalierung der Intensit√§ten  --------}
 {----------------------------------------------}
 
 procedure skal_intensity(var kern1,kern2:real);
-{ Skalierung der Intensit‰ten, suchen von Int(max) }
+{ Skalierung der Intensit√§ten, suchen von Int(max) }
 var   max_intensi1,such_intensi1,
       max_intensi2,such_intensi2,kern : real;
 begin { skal_intensity }
   if test then
     begin
       tabs(t);
-      writeln('Skalierung der Intensit‰ten auf 100% ... !');
+      writeln('Skalierung der Intensit√§ten auf 100% ... !');
     end;
-  { Welches Isotop ist h‰ufiger ? }
+  { Welches Isotop ist h√§ufiger ? }
   if (hauf1 > hauf2)
     then
       begin  hf1:=1; hf2:=hauf2/hauf1;  end
@@ -208,7 +208,7 @@ begin { skal_intensity }
     begin
       if ( ( fu1[n]-fo1[m] = 0) or (abs( fu1[n] - fo1[m]) = 1) ) then
       begin
-        {  maximale Linien-Intensit‰ten  }
+        {  maximale Linien-Intensit√§ten  }
         such_intensi1:=intens(ju,jo,fu1[n],fo1[m],kern)*100*hf1;
         if (such_intensi1 > max_intensi1) then max_intensi1 := such_intensi1;
       end { if };
@@ -223,7 +223,7 @@ begin { skal_intensity }
     begin
       if ( ( fu2[n]-fo2[m] = 0) or (abs( fu2[n] - fo2[m]) = 1) ) then
       begin
-        {  maximale Linien-Intensit‰ten  }
+        {  maximale Linien-Intensit√§ten  }
         such_intensi2:=intens(ju,jo,fu2[n],fo2[m],kern)*100*hf2;
         if (such_intensi2 > max_intensi2) then max_intensi2 := such_intensi2;
       end { if };
@@ -247,7 +247,7 @@ label ende1,ende2;
 begin { save }
   writeln('Isotopiedaten werden gespeichert in der Datei : ',datname);
   assign(filvar,datname);
-  rewrite(filvar);             { gleichnamige Datei wird Å¸berschrieben }
+  rewrite(filvar);             { gleichnamige Datei wird ¬Å√ºberschrieben }
 {  Parameter  }
   writeln(filvar,'Isotopiedaten:');
   writeln(filvar,'==============');
@@ -317,7 +317,7 @@ begin { save }
         if ( ( fu1[n]=0) and (fo1[m]=0) )  then goto ende1;
         energie1[m,n] := wo1[m] - wu1[n];
         write(filvar,'E1(',fo1[m]:3:1,',',fu1[n]:3:1,') = ',energie1[m,n]:15:6);
-        { Isotop Linien-Intensit‰ten skaliert auf 100 % }
+        { Isotop Linien-Intensit√§ten skaliert auf 100 % }
         intensi:=skal_intensi*intens(ju,jo,fu1[n],fo1[m],ikern1)*100*hf1 ;
         writeln(filvar,'   (Int : ',intensi:6:2,'%)');
         ende1:
@@ -365,7 +365,7 @@ begin { save }
         if ( ( fu2[n]=0) and (fo2[m]=0) ) then goto ende2;
         energie2[m,n] := wo2[m] - wu2[n];
         write(filvar,'E2(',fo2[m]:3:1,',',fu2[n]:3:1,') = ',energie2[m,n]:15:6);
-        { Isotop Linien-Intensit‰ten skaliert auf 100 % }
+        { Isotop Linien-Intensit√§ten skaliert auf 100 % }
         intensi:=skal_intensi*intens(ju,jo,fu2[n],fo2[m],ikern2)*100*hf2;
         writeln(filvar,'   (Int : ',intensi:6:2,'%)');
         ende2:
@@ -398,7 +398,7 @@ begin { berechne_f }
 { Isotop 1 }
   kern:=kern1;
   tabs(t);
-  { Berechnung f¸r den unteren Zustand }
+  { Berechnung f√ºr den unteren Zustand }
   j:=ju;
   if j>=kern then max:=kern
   else max:=j;
@@ -410,7 +410,7 @@ begin { berechne_f }
     if test then WRITELN('Fu1(',n,') = ',FU1[N]:10:1);
   end { for };
   if test then tabs(t);
-  { Berechnung fÅr den oberen Zustand }
+  { Berechnung f¬År den oberen Zustand }
   j:=jo;
   if j>=kern then max:=kern
   else max:=j;
@@ -425,7 +425,7 @@ begin { berechne_f }
 { Isotop 2 }
   kern:=kern2;
   tabs(t);
-  { Berechnung f¸r den unteren Zustand }
+  { Berechnung f√ºr den unteren Zustand }
   j:=ju;
   if j>=kern then max:=kern
   else max:=j;
@@ -437,7 +437,7 @@ begin { berechne_f }
     if test then WRITELN('Fu2(',n,') = ',FU2[N]:10:1);
   end { for };
   if test then tabs(t);
-  { Berechnung f¸r den oberen Zustand }
+  { Berechnung f√ºr den oberen Zustand }
   j:=jo;
   if j>=kern then max:=kern
   else max:=j;
@@ -464,7 +464,7 @@ begin { berechne_k }
 
  { Isotop 1 }
   kern:=kern1;
-  { Berechnung f¸r den unteren Zustand }
+  { Berechnung f√ºr den unteren Zustand }
   for n:=0 to maxxu1 do
   begin
     j:=ju;
@@ -473,7 +473,7 @@ begin { berechne_k }
     if test then writeln('Ku1(',fu1[n]:3:1,') = ',ku1[n]:10:1);
   end { for };
   if test then tabs(t);
-  { Berechnung f¸r den oberen Zustand }
+  { Berechnung f√ºr den oberen Zustand }
   for n:=0 to maxxo1 do
   begin
     j:=jo;
@@ -484,7 +484,7 @@ begin { berechne_k }
 
  { Isotop 2 }
   kern:=kern2;
-  { Berechnung f¸r den unteren Zustand }
+  { Berechnung f√ºr den unteren Zustand }
   for n:=0 to maxxu2 do
   begin
     j:=ju;
@@ -493,7 +493,7 @@ begin { berechne_k }
     if test then writeln('Ku2(',fu2[n]:3:1,') = ',ku2[n]:10:1);
   end { for };
   if test then tabs(t);
-  { Berechnung fÅr den oberen Zustand }
+  { Berechnung f¬År den oberen Zustand }
   for n:=0 to maxxo2 do
   begin
     j:=jo;
@@ -533,7 +533,7 @@ var kern : real;
 
 begin { berechne_w }
   if test then tabs(t);
-  { Berechnung f¸r den unteren Zustand  }
+  { Berechnung f√ºr den unteren Zustand  }
 
  { Isotop 1 }
   kern:=kern1;
@@ -545,7 +545,7 @@ begin { berechne_w }
    if test then writeln('Wu1(',fu1[m]:3:1,') = ',wu1[m]:15:6);
   end { for };
   if test then tabs(t);
-  { Berechnung f¸r den oberen Zustand  }
+  { Berechnung f√ºr den oberen Zustand  }
   for m:=0 to maxxo1 do
   begin
     f:=fo1[m];
@@ -564,7 +564,7 @@ begin { berechne_w }
    if test then writeln('Wu2(',fu2[m]:3:1,') = ',wu2[m]:15:6);
   end { for };
   if test then tabs(t);
-  { Berechnung f¸r den oberen Zustand  }
+  { Berechnung f√ºr den oberen Zustand  }
   for m:=0 to maxxo2 do
   begin
     f:=fo2[m];
@@ -579,7 +579,7 @@ end { berechne_w };
 {                  unter Beachtung der Auswahlregeln:                  }
 {                                                                      }
 {                       delta(F) = 0, +1, -1     und                   }
-{                  ‹bergang F = 0 nach F = 0  verboten                 }
+{                  √úbergang F = 0 nach F = 0  verboten                 }
 {                                                                      }
 {                       Wo(n) - Wu(m)  ==>  E(n,m)                     }
 {                Energiewerte W,E in [MHz] - Einheiten                 }
@@ -608,7 +608,7 @@ begin { energien_zuordnung }
           else energie1[m,n] := wo1[m] - wu1[n];
         linien_anzahl1:=linien_anzahl1+1;
         if test then write('E1(',fo1[m]:3:1,',',fu1[n]:3:1,') = ',energie1[m,n]:15:6);
-        {  Linien-Intensit‰ten  }
+        {  Linien-Intensit√§ten  }
 
         intensi:=skal_intensi*intens(ju,jo,fu1[n],fo1[m],kern)*100*hf1;
         if test then writeln('   (Int : ',intensi:6:2,'%)');
@@ -635,7 +635,7 @@ end { for };
           else energie2[m,n] := wo2[m] - wu2[n];
         linien_anzahl2:=linien_anzahl2+1;
         if test then write('E2(',fo2[m]:3:1,',',fu2[n]:3:1,') = ',energie2[m,n]:15:6);
-        {  Linien-Intensit‰ten  }
+        {  Linien-Intensit√§ten  }
 
         intensi:=skal_intensi*intens(ju,jo,fu2[n],fo2[m],kern)*100*hf2;
         if test then writeln('   (Int : ',intensi:6:2,'%)');
@@ -648,7 +648,7 @@ end { for };
     if test then writeln;
 end { for };
 
-  { Energien skalieren, grˆﬂten Bereich w‰hlen }
+  { Energien skalieren, gr√∂√üten Bereich w√§hlen }
   if (energmin1 < energmin2)
     then energmin:=energmin1
     else energmin:=energmin2;
@@ -666,7 +666,7 @@ end { for };
       writeln('Anzahl der Linien ',isotop1,' Isotop : ',linien_anzahl1:2);
       writeln('Anzahl der Linien ',isotop2,' Isotop : ',linien_anzahl2:2);
       tabs(ft);
-      write('Bitte <RETURN> drÅcken : ');
+      write('Bitte <RETURN> dr¬Åcken : ');
       readln(ch);
     end { if };
 
@@ -707,7 +707,7 @@ begin { summation }
   repeat
     { Aufsummiertes Signal einzeichnen        }
     ysumme:=untergrund+(ysum[kl]);
-    { Kennzeichnen der Punkte die auﬂerhalb liegen... }
+    { Kennzeichnen der Punkte die au√üerhalb liegen... }
     if (ysumme>830) then
       begin
         ysumme:=875;
@@ -719,8 +719,8 @@ begin { summation }
     if (yfirst  > 830) then yfirst :=830;
     if (ysecond > 830) then ysecond:=830;
     DrawLine(xlo,yfirst,xlo+deltalo,ysecond);
-    xlo:=xlo + deltalo;   { X-Wert erhˆhen }
-    kl:=kl+1;             { Laufindex f¸r Summe erhˆhen }
+    xlo:=xlo + deltalo;   { X-Wert erh√∂hen }
+    kl:=kl+1;             { Laufindex f√ºr Summe erh√∂hen }
   until ( (xlo > x_rechts) or (kl>=aufloesung) );
   drucken;
   gotoxy(62,24); write('        <<RETURN>>');
@@ -768,7 +768,7 @@ begin { begin_grafik }
   x_max:=energmax;
   InitGraphic;                            {init the system and screen}
   SelectScreen(1);
-  ClearScreen;                         { Wertebereiche f¸r Grafik:     }
+  ClearScreen;                         { Wertebereiche f√ºr Grafik:     }
   x_links:=x_min-offset;            { 0      <= Y-Achse <= 1000     }
   x_rechts:=x_max+offset;           { x_links < X-Wert  <  x_rechts }
   DefineWorld(1,x_links,0,x_rechts,1000); {define a world for drawing}
@@ -779,7 +779,7 @@ begin { begin_grafik }
   DrawLine(x_links,200,x_rechts,200);      {  doppelte Energieachse  }
   DrawLine(x_links,205,x_rechts,205);      {  [MHz] zeichnen         }
 
-  DrawLine(x_links,870,x_rechts,870);      { Fenster f¸r Fu/Fo-Werte }
+  DrawLine(x_links,870,x_rechts,870);      { Fenster f√ºr Fu/Fo-Werte }
   DrawLine(x_links,850,x_rechts,850);
   DrawLine(x_links,830,x_rechts,830);
   y_axis;                                  { Y-Achse einzeichnen     }
@@ -791,10 +791,10 @@ begin { begin_grafik }
   SetLineStyle(0);
   gotoxy(3,2);
   write(element);                             {  Elementbezeichnung  }
-  writeln(',  ‹bergang : ',vonzustand,' -> ',nachzustand);
+  writeln(',  √úbergang : ',vonzustand,' -> ',nachzustand);
   gotoxy(50,2);  write('ISOTOPIE-Verschiebung');
   gotoxy(50,3);  write('   * Simulation *   ');
-  gotoxy(3,22);  write('Profilart <L>orentz / <G>auﬂ : ');
+  gotoxy(3,22);  write('Profilart <L>orentz / <G>au√ü : ');
   gotoxy(34,22); readln(profil);
   profil:=upcase(profil);
   gotoxy(34,22); write(profil);
@@ -802,14 +802,14 @@ begin { begin_grafik }
 end { begin_grafik };
 
 {---------------------------------------}
-{-------   Grafik abschlieﬂen   --------}
+{-------   Grafik abschlie√üen   --------}
 {---------------------------------------}
 
 procedure end_grafik;
 var art : char;
     zeige : boolean;
 begin { end_grafik }
-  { Lˆschen der Abfrage }
+  { L√∂schen der Abfrage }
   gotoxy(3,22); write('                                     ');
   gotoxy(3,23); write('                                     ');
   gotoxy(3,24); for i:=1 to 40 do write(' ');
@@ -857,7 +857,7 @@ begin { end_grafik }
 end { end_grafik };
 
 {-------------------------------------------------------}
-{--- Zeichnet die gefundenen HFS-‹bergangsfrequenzen ---}
+{--- Zeichnet die gefundenen HFS-√úbergangsfrequenzen ---}
 {-------  der beiden Isotope auf den Bildschirm. -------}
 {-------------------------------------------------------}
 
@@ -880,10 +880,10 @@ begin { zeige_spektrum_crt }
            if ( ( fu1[n]=0) and (fo1[m]=0) ) then goto ende1;
            profanz:=profanz+1;
 
-           {  HFS-‹bergang einzeichnen:    }
+           {  HFS-√úbergang einzeichnen:    }
            x:=energie1[m,n];
 
-           {  Linien-Intensit‰ten  }
+           {  Linien-Intensit√§ten  }
            intensity:=intens(ju,jo,fu1[n],fo1[m],kern1)*skal_intensi;
            intensity:=intensity*grafik_skal*hf1;
 
@@ -924,10 +924,10 @@ begin { zeige_spektrum_crt }
            if ( ( fu2[n]=0) and (fo2[m]=0) ) then goto ende2;
            profanz:=profanz+1;
 
-           {  HFS-öbergang einzeichnen:    }
+           {  HFS-≈°bergang einzeichnen:    }
            x:=energie2[m,n];
 
-           {  Linien-Intensit‰ten  }
+           {  Linien-Intensit√§ten  }
            intensity:=intens(ju,jo,fu2[n],fo2[m],kern2)*skal_intensi;
            intensity:=intensity*grafik_skal*hf2;
 
@@ -969,7 +969,7 @@ begin { main }
   t:=40;
   belegen;
   werte_save:=TRUE;
-  ladefacarr;  { Fakult‰ten-Array belegen }
+  ladefacarr;  { Fakult√§ten-Array belegen }
   parameter_load;
   profil_parameter_load;
   untergrund:=untergrund+205;
@@ -983,7 +983,7 @@ begin { main }
     werte_speichern;
     clrscr;
     test:=TRUE;
-    writeln('Berechnung l‰uft...');
+    writeln('Berechnung l√§uft...');
     berechne_f(ikern1,ikern2);
     berechne_k(ikern1,ikern2);
     berechne_w(ao1,au1,bo1,bu1,ao2,au2,bo2,bu2,ikern1,ikern2);
