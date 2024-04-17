@@ -1,8 +1,8 @@
 {  IPARAM.INC
 
-   Parameter einlesen f¸r das ISOTOP-Programm f¸r
+   Parameter einlesen f√ºr das ISOTOP-Programm f√ºr
    jeweils   z w e i  Isotope
-   A-, B-Faktoren    >  f¸r jeweils den
+   A-, B-Faktoren    >  f√ºr jeweils den
    J-Drehimpulse     >  unteren/oberen Zustand
    I-Kernspin
 
@@ -45,9 +45,9 @@ begin
      then element:=strx
      else element:=defaultelement;
     gotoxy(1,9);
-    writeln('Welcher öbergang soll betrachtet werden ?');
+    writeln('Welcher ≈°bergang soll betrachtet werden ?');
     gotoxy(1,10);
-    write(' ‹bergang von Zustand           : ',defaultvon);
+    write(' √úbergang von Zustand           : ',defaultvon);
     gotoxy(35,10);
     readln(strx1);
     gotoxy(1,11);
@@ -113,7 +113,7 @@ begin
       if xikern<>0 then ikern1:=xikern;
 
       gotoxy(12,zei+5); writeln(hauf1:9:2,' [%]');
-      xhauf:=realin(1,zei+5,'HÑufigk. = ',4);
+      xhauf:=realin(1,zei+5,'H‚Äûufigk. = ',4);
       if xhauf<>0 then hauf1:=xhauf;
 
       gotoxy(12,zei+6); writeln(s1:9:4,' [MHz]');
@@ -146,7 +146,7 @@ begin
       if xikern<>0 then ikern2:=xikern;
 
       gotoxy(41,zei+5); writeln(hauf2:9:2,' [%]');
-      xhauf:=realin(30,zei+5,'HÑufigk. = ',4);
+      xhauf:=realin(30,zei+5,'H‚Äûufigk. = ',4);
       if xhauf<>0 then hauf2:=xhauf;
 
       gotoxy(41,zei+6); writeln(s2:9:4,' [MHz]');
@@ -175,7 +175,7 @@ begin
       if xfwhm<>0 then FWHM:=xfwhm;
 
       gotoxy(43,zei+10); writeln(aufloesung:4);
-      xaufl:=realin(30,zei+10,'Auflîsung  = ',4);
+      xaufl:=realin(30,zei+10,'Aufl‚Äùsung  = ',4);
       if xaufl<>0 then aufloesung:=trunc(xaufl);
 
       writeln(#7);
@@ -193,7 +193,7 @@ begin
         gotoxy(1,21);
         for l:=1 to 80 do write(#205);
         gotoxy(1,20);
-        writeln('ACHTUNG: Mind. ein Drehimpuls Ju, Jo  u n d  I1, I2 mÅssen ungleich Null sein !');
+        writeln('ACHTUNG: Mind. ein Drehimpuls Ju, Jo  u n d  I1, I2 m¬Åssen ungleich Null sein !');
         write(#7,#7,#7);
         lowvideo;
         for t:=1 to 10000 do;
