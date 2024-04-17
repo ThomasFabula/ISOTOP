@@ -5,10 +5,9 @@ rem rs232
 rem HERCULES-Grafikkarte initialisieren
 rem & HERCULES Drucker-Hardcopy installieren
 hgc full hprint
-echo Startupfile fÅr ISOTOP
+echo Startupfile f√ºr ISOTOP
 type isotop.txt
 pause
 rem Programmstart
 i
 echo=on
-
