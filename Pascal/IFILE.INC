@@ -1,6 +1,6 @@
 {  IFILE.INC
 
-   ließt die Parameter von Disk und speichert
+   lieÃŸt die Parameter von Disk und speichert
    sie wieder ab.
 
 }
@@ -69,7 +69,7 @@ end;
 procedure parameter_save;
 begin
   gotoxy(1,3);
-  write('Letztgültiger Parametersatz wird gespeichert in ISOTOP.PAR');
+  write('LetztgÃ¼ltiger Parametersatz wird gespeichert in ISOTOP.PAR');
   gotoxy(1,9); write('                                                ');
   gotoxy(1,9);
   write('Kommentar zum Datensatz:');
@@ -87,8 +87,8 @@ begin
   assign(filvar,pardatei);
   rewrite(filvar);
   writeln(filvar,'Isotopenparameter: (Element/unt. Zust./ober. Zust./Jo,Ju,I1,I2/');
-  writeln(filvar,'------------------  Isotop1/Ao1,Au1/Bo1,Bu1/H„ufigk1,Schwpkt1/');
-  writeln(filvar,'                    Isotop2/Ao2,Au2/Bo2,Bu2/H„ufigk2,Schwpkt2)');
+  writeln(filvar,'------------------  Isotop1/Ao1,Au1/Bo1,Bu1/Hâ€žufigk1,Schwpkt1/');
+  writeln(filvar,'                    Isotop2/Ao2,Au2/Bo2,Bu2/Hâ€žufigk2,Schwpkt2)');
   writeln(filvar,element);
   writeln(filvar,vonzustand);
   writeln(filvar,nachzustand);
@@ -128,12 +128,12 @@ end;
 procedure profil_parameter_save;
 begin
   gotoxy(1,4);
-  write('Letztgültige Profilparameter werden gespeichert in ISPROFIL.PAR');
+  write('LetztgÃ¼ltige Profilparameter werden gespeichert in ISPROFIL.PAR');
   untergrund:=untergrund-205;
   profildatei:='ISPROFIL.PAR';
   assign(filvar,profildatei);
   rewrite(filvar);
-  writeln(filvar,'Profilparameter (Untergrund/FWHM/Auflösung):');
+  writeln(filvar,'Profilparameter (Untergrund/FWHM/AuflÃ¶sung):');
   writeln(filvar,untergrund:4:2);
   writeln(filvar,FWHM:4:2);
   writeln(filvar,aufloesung:4);
