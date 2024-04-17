@@ -2,8 +2,8 @@
 
     Deklarationen zu ISOTOP.PAS
 
-    (C) 1987  Institut f¸r Angewandte Physik
-              Universit‰t Bonn
+    (C) 1987  Institut f√ºr Angewandte Physik
+              Universit√§t Bonn
 
 }
 
@@ -15,7 +15,7 @@
 const   h           =  1;     {  Planck'sches Wirkungsquantum [Js] }
         anzahl      =  30;
         lmax        = 100;    {  Anzahl aller gefundenen Linien }
-        grafik_skal = 500;    { Skalierung der Intensit‰ten fÅr Bildschirm }
+        grafik_skal = 500;    { Skalierung der Intensit√§ten f¬År Bildschirm }
 
 type    str5        = string[5];
         str8        = string[8];
@@ -36,14 +36,14 @@ var   au1,ao1,bu1,bo1      : real;        { HFS-Konstanten Isotop1   }
       ikern1,ikern2        : real;        { Kern-Drehimpulse         }
       isotop1              : str5;        { Bezeichnung Isotop1      }
       isotop2              : str5;        { Bezeichnung Isotop2      }
-      hauf1,hauf2          : real;        { relative H‰ufigkeiten    }
+      hauf1,hauf2          : real;        { relative H√§ufigkeiten    }
       is                   : real;        { Isotopieverschiebung     }
       s1,s2                : real;        {  Schwerpunkte            }
 
       untergrund           : real;        { siehe unten }
       FWHM                 : real;        {   "     "   }
       aufloesung           : integer;
-      { Variablen - Untergrund :  Untergrundrate der Linien-Intensit‰ten
+      { Variablen - Untergrund :  Untergrundrate der Linien-Intensit√§ten
                   - FWHM       :  Halbwertsbreite der Linien
                                   (Full-Width-Half-Maximum)
                   - Aufloesung :  Punktaufloesung der Lorentzlinie
@@ -53,7 +53,7 @@ var   au1,ao1,bu1,bo1      : real;        { HFS-Konstanten Isotop1   }
       f,k                   : real;        {  Hilfsvariablen            }
       hf1,hf2,unt           : real;        {  Hilfsvariablen            }
       i,ii,ik,ij,t          : integer;     {  Hilfsvariablen            }
-      intensity             : real;        {  Linien-Intensit‰t         }
+      intensity             : real;        {  Linien-Intensit√§t         }
       maxxu1,maxxu2         : integer;     {  max unterer Drehimp.wert  }
       maxxo1,maxxo2         : integer;     {  max oberer Drehimpulswert }
       n,l,m                 : integer;     {  Schleifenidices           }
@@ -111,5 +111,5 @@ var   au1,ao1,bu1,bo1      : real;        { HFS-Konstanten Isotop1   }
       skal_sum     : real;            { Skalierung Sum(max) = 100 % }
       ijk          : integer;         { Laufindex              }
       schalter     : boolean;         { Steuervariable         }
-      summi        : integer;         { Z‰hler f¸r Profilberechnung }
+      summi        : integer;         { Z√§hler f√ºr Profilberechnung }
 
